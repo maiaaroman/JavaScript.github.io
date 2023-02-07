@@ -25,16 +25,16 @@ for(let i = 0; i < 1; i++) {
     let primerMonto = parseInt(prompt("Ingrese primer monto: "));
     let segundoMonto = parseInt(prompt("Ingrese segundo monto: "));
     let tercerMonto = parseInt(prompt("Ingrese tercer monto: "));
-    let promedio = calcular(primerMonto, segundoMonto, tercerMonto);
-    alert("El gasto total de este mes fue de $" + promedio.toFixed(2));
+    let total = calcular(primerMonto, segundoMonto, tercerMonto);
+    alert("El gasto total de este mes fue de $" + total.toFixed(2));
 }
 
 function calcular(primerMonto, segundoMonto, tercerMonto) {
-    let promedio = (primerMonto + segundoMonto + tercerMonto);
-    return promedio;
+    let total = (primerMonto + segundoMonto + tercerMonto);
+    return total;
 }
 
-let gasto = buenGasto(promedio);
+let gasto = buenGasto(total);
 
 if(buenGasto) {
     alert(nombreCompleto + " estuvo bien este mes");
@@ -42,8 +42,8 @@ if(buenGasto) {
     alert(nombreCompleto + " te pasaste un poco este mes!");
 }
 
-function buenGasto(promedio) {
-    if(promedio <= 50000) {
+function buenGasto(total) {
+    if(total <= 50000) {
         return true;
     } else {
         return false;
