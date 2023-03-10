@@ -1,0 +1,68 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.inactive {
+    display: none;
+}
+
+#header {
+    height: 115px;
+    background-color: rgb(238, 225, 200);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 1s;
+}
+
+h1 {
+    padding: 50px;
+}
+
+.parrafo {
+    font-size: 15px;
+}
+
+.caja {
+    padding: 10px;
+    display: flex;
+}
+
+#contenedorProductos {
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 100px;
+}
+
+#contCarrito {
+    padding-left: 30px;
+    width: 150px;
+}
+
+#ver {
+    margin: 5px;
+}
+
+#vaciar {
+    margin: 5px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+h5 {
+    padding-left: 22px;
+    padding-top: 10px;
+}

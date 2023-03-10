@@ -1,120 +1,134 @@
 class Producto {
-    constructor(nombre, precio, stock) {
+    constructor(nombre, precio, img, id) {
         this.nombre = nombre;
         this.precio = precio;
-        this.stock = stock;
-    }
-
-    sumaStock(cantidad) {
-        this.stock += cantidad;
-    }
-
-    venta(cantidad) {
-        if (this.stock >= cantidad) {
-            this.stock -= cantidad;
-            console.log("Se vendieron " + cantidad + " unidades del producto: " + this.nombre);
-        }
+        this.img = img;
+        this.id = id;
+        this.cantidad = 1;
     }
 }
 
-const sillon = new Producto("Sillon", 55000, 15);
-const mesa = new Producto("Mesa", 25000, 10);
-const silla = new Producto("Silla", 5400, 20);
-const vitrina = new Producto("Vitrina", 34000, 5);
-const mesaRatona = new Producto("Mesa ratona", 12000, 11);
+const collarPlata = new Producto("Collar Plata", 5600, "./images/Collar Plata.jpeg", 1);
+const collarOro = new Producto("Collar Oro", 6500, "./images/Collar Oro.jpg", 2);
+const anilloSol = new Producto("Anillo Sol", 2100, "./images/Anillo Sol.jpeg", 3);
+const anilloLuna = new Producto("Anillo Luna", 2100, "./images/Anillo Luna.jpg", 4);
+const anilloCorazon = new Producto("Anillo Corazon", 2500, "./images/Anillo Corazon.jpeg", 5);
+const pulseraPlata = new Producto("Pulsera Plata", 3700, "../images/Pulsera Plata.jpg", 6);
+const pulseraOro = new Producto("Pulsera Oro", 4200, "../images/Pulsera Oro.jpg", 7);
 
-const arrayProductos = [sillon, mesa, silla, vitrina, mesaRatona];
+const arrayProductos = [collarPlata, collarOro, anilloSol, anilloLuna, anilloCorazon, pulseraPlata, pulseraOro];
 
 console.log(arrayProductos);
 
+let carrito = [];
+
+if(localStorage.getItem("carrito")) {
+    carrito = JSON.parse(localStorage.getItem("carrito"));
+}
+
+const contenedorProductos = document.getElementById("contenedorProductos");
+const contenedorCarrito = document.getElementById("contenedorCarrito");
+
 arrayProductos.forEach( producto => {
-    console.log(producto);
+    const div = document.createElement("div");
+    div.className = "caja";
+    div.innerHTML = `<div class="card" style="width: 13rem;">
+                        <img src="${producto.img}" class="card-img-top" alt="producto">
+                        <div class="card-body">
+                            <p class="card-text">${producto.nombre}</p>
+                            <p class="card-text">${producto.precio}</p>
+                            <button type="button" id="add${producto.id}" class="buttonProduct btn btn-outline-primary">Agregar al carrito</button>
+                         </div>
+                    </div>
+                    `;
+
+    contenedorProductos.appendChild(div);
+
+    const boton = document.getElementById(`add${producto.id}`);
+    boton.addEventListener("click", () => {
+        agregarAlCarrito(producto.id)
+        console.log("click");
+        console.log(carrito);
+    })
 })
 
-alert("Bienvenido/a a la tienda de ML deco");
-let prodstock = prompt("Desea ver los productos en stock? Indique Si o No");
+const agregarAlCarrito = (prodId) => {
+    const item = arrayProductos.find((prod) => prod.id === prodId);
+    carrito.push(item);
+    calculo();
 
-if (prodstock === "Si") {
-    alert("Los productos en stock son los siguientes: Sillon, Mesa, Silla, Vitrina, Mesa ratona.");
-    let compra = prompt("Le interesaron nuestros productos? Indique Si o No para continuar");
-
-    if (compra === "Si") {
-        function menu() {
-            let opciones = parseInt(prompt("Ingrese la opcion que desea: 1)Sillon 2)Mesa 3)Silla 4)Vitrina 5)Mesa Ratona 6)Salir"));
-            return opciones;
-        }
-        
-        
-        function Sillon() {
-            let sillon = arrayProductos.find(producto => producto.nombre === "Sillon");
-            alert("El producto seleccionado tiene un valor de $" + sillon.precio);
-        }
-        
-        function Mesa() {
-            let mesa = arrayProductos.find(producto => producto.nombre === "Mesa");
-            alert("El producto seleccionado tiene un valor de $" + mesa.precio);
-        }
-        
-        function Silla() {
-            let silla = arrayProductos.find(producto => producto.nombre === "Silla");
-            alert("El producto seleccionado tiene un valor de $" + silla.precio);
-        }
-        
-        function Vitrina() {
-            let vitrina = arrayProductos.find(producto => producto.nombre === "Vitrina");
-            alert("El producto seleccionado tiene un valor de $" + vitrina.precio);
-        }
-        
-        function MesaRatona() {
-            let mesaRatona = arrayProductos.find(producto => producto.nombre === "Mesa ratona");
-            alert("El producto seleccionado tiene un valor de $" + mesaRatona.precio);
-        }
-        
-        function Salir() {
-            alert("Hasta luego!");
-        }
-        
-        let opciones = menu();
-        
-        switch(opciones) {
-            case 1:
-                Sillon();
-                break;
-            case 2:
-                Mesa();
-                break;
-            case 3:
-                Silla();
-                break;
-            case 4:
-                Vitrina();
-                break;
-            case 5:
-                MesaRatona();
-                break;
-            case 6:
-                Salir();
-                break;
-            default:
-                alert("Opcion incorrecta");
-                break;
-        }
-
-        let valor = prompt("Desea continuar con la compra? Indique Si o No");
-        
-        if (valor === "Si") {
-            let clienteNombre = prompt("Ingrese su nombre: ");
-            let clienteApellido = prompt("Ingrese su apellido: ");
-            let clienteDni = parseInt(prompt("Ingrese su dni: "));
-            let clienteMail = prompt("Ingrese su mail: ");
-            let clienteDirec = prompt("Ingrese su direccion: ");
-            alert("Su pedido ha sido realizado, le llegara un mail indicando el recorrido de su paquete en las proximas 24hs. De lo contrario comuniquese con nuestro centro de atencion. Gracias por su compra!");
-        } else {
-            alert("Hasta luego!");
-        }
-    } else {
-        alert("Hasta luego!");
-    }
-} else {
-    alert("Hasta luego!");
+    localStorage.setItem("carrito", JSON.stringify(carrito));
 }
+
+const ver = document.getElementById('ver');
+
+ver.addEventListener("click", () => {
+    mostrarCarrito();
+})
+
+const mostrarCarrito = () => {
+    contenedorCarrito.innerHTML = "";
+    contenedorCarrito.classList.toggle('inactive');
+
+    carrito.forEach( producto => {
+        const div = document.createElement("div");
+        div.className = "caja";
+        div.innerHTML = `<ul class="list-group list-group-flush">
+                            <li class="list-group-item">${producto.nombre}</li>
+                            <p class="card-text">${producto.precio}</p>
+                            <p class="card-text">${producto.cantidad}</p>
+                            <button type="button" id="eliminar${producto.id}" class="buttonProduct btn btn-outline-primary">Eliminar</button>
+                        </ul>
+                        `;
+    
+        contenedorCarrito.appendChild(div);
+
+        const boton2 = document.getElementById(`eliminar${producto.id}`);
+        boton2.addEventListener("click", () => {
+            eliminarProducto(producto.id);
+        })
+
+        const eliminarProducto = (id) => {
+            const producto = carrito.find(producto => producto.id === id);
+            const indice = carrito.indexOf(producto);
+            carrito.splice(indice,1);
+            mostrarCarrito();
+            calculo();
+            
+            localStorage.setItem("carrito", JSON.stringify(carrito));
+        }
+
+        const vaciar = document.getElementById(`vaciar`);
+
+        vaciar.addEventListener(`click`, () => {
+            eliminarCarrito();
+            calculo();
+        })
+
+        const eliminarCarrito = () => {
+            carrito = [];
+            mostrarCarrito();
+
+            localStorage.clear();
+        }
+        
+    })
+}
+
+const totalCompra = document.getElementById("totalCompra");
+
+const calculo = () => {
+    let total = 0;
+    carrito.forEach( producto => {
+        total += producto.precio * producto.cantidad;
+    })
+
+    totalCompra.innerHTML = `$${total}`;
+}
+
+
+/*
+btn.onmousedown = () => {
+    console.log(mousedown)
+}
+*/
