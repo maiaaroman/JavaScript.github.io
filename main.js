@@ -13,8 +13,8 @@ const collarOro = new Producto("Collar Oro", 6500, "./images/Collar Oro.jpg", 2)
 const anilloSol = new Producto("Anillo Sol", 2100, "./images/Anillo Sol.jpeg", 3);
 const anilloLuna = new Producto("Anillo Luna", 2100, "./images/Anillo Luna.jpg", 4);
 const anilloCorazon = new Producto("Anillo Corazon", 2500, "./images/Anillo Corazon.jpeg", 5);
-const pulseraPlata = new Producto("Pulsera Plata", 3700, "../images/Pulsera Plata.jpg", 6);
-const pulseraOro = new Producto("Pulsera Oro", 4200, "../images/Pulsera Oro.jpg", 7);
+const pulseraPlata = new Producto("Pulsera Plata", 3700, "./images/Pulsera Plata.jpg", 6);
+const pulseraOro = new Producto("Pulsera Oro", 4200, "./images/Pulsera Oro.jpg", 7);
 
 const arrayProductos = [collarPlata, collarOro, anilloSol, anilloLuna, anilloCorazon, pulseraPlata, pulseraOro];
 
