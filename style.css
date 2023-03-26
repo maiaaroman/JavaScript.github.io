@@ -13,16 +13,56 @@ body {
 }
 
 #header {
-    height: 115px;
-    background-color: rgb(238, 225, 200);
+    width: 100%;
+    padding: 30px;
     display: flex;
-    align-items: center;
+    flex-direction: row;
     justify-content: space-between;
-    transition: all 1s;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-right: 100px;
 }
 
-h1 {
-    padding: 50px;
+#contenedorCarrito {
+    position: absolute;
+    z-index: 10;
+    background-color: white;
+    right: 300px;
+    top: 100px;
+    padding: 20px;
+    height: 300px;
+    overflow-y: scroll;
+    
+    -webkit-box-shadow: -2px 2px 18px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px 2px 18px 0px rgba(0,0,0,0.75);
+    box-shadow: -2px 2px 18px 0px rgba(0,0,0,0.75);
+
+}
+
+#form {
+    position: absolute;
+    z-index: 10;
+    background-color: white;
+    width: 700px;
+    left: 200px;
+    padding: 20px;
+    padding-top: 30px;
+    -webkit-box-shadow: -2px 2px 18px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px 2px 18px 0px rgba(0,0,0,0.75);
+    box-shadow: -2px 2px 18px 0px rgba(0,0,0,0.75);
+}
+
+#flechita {
+    position:absolute;
+    top: 0;
+    left: 5px;
+    z-index: 12;
+    width: 30px;
+}
+
+
+.logo {
+    width: 222px;
 }
 
 .parrafo {
@@ -35,25 +75,67 @@ h1 {
 }
 
 #contenedorProductos {
-    padding: 30px;
+    margin: 15px 30px 40px 30px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: stretch;
-    gap: 100px;
+    gap: 110px;
+}
+
+.colorFondo {
+    background-color: rgb(243, 236, 236);
+    padding: 2rem;
+    margin: 4rem;
+    border-radius: 8px;
 }
 
 #contCarrito {
-    padding-left: 30px;
-    width: 150px;
+    width: 284px;
 }
 
 #ver {
+    width: 150px;
     margin: 5px;
+    color: rgb(112, 88, 36);
+}
+
+.bi {
+    width: 35px;
+    height: 35px;
+    color: rgb(112, 88, 36);
 }
 
 #vaciar {
+    width: 150px;
     margin: 5px;
+    color: rgb(112, 88, 36);
+}
+
+#comprar {
+    width: 150px;
+    margin: 5px;
+    color: rgb(112, 88, 36);
+    text-decoration: none;
+}
+
+.eliminar {
+    color: rgb(112, 88, 36);
+}
+
+.add {
+    color: rgb(112, 88, 36);
+}
+
+.btn {
+    border-color: rgb(112, 88, 36);
+    color: rgb(112, 88, 36);
+    background-color: white;
+}
+
+.btn:hover {
+    border-color: rgb(112, 88, 36);
+    color: rgb(112, 88, 36);
 }
 
 .card-body {
@@ -65,4 +147,62 @@ h1 {
 h5 {
     padding-left: 22px;
     padding-top: 10px;
+    width: 30px;
+    text-align: center;
 }
+
+ul {
+    align-items: center;
+    margin: 5px;
+}
+
+.row {
+    justify-content: center;
+}
+
+#formulario {
+    width: 263px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+}
+
+.enviar {
+    width: 100px;
+    margin: 13px;
+}
+
+.cancelar {
+    width: 100px;
+    margin-top: -11px;
+}
+
+#footer {
+    margin-left: 30px;
+    margin-right: 30px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+#footer-container {
+    text-align: center;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+#footer .icono img {
+    width: 20px;
+    height: 20px;
+}
+
+.icono {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
